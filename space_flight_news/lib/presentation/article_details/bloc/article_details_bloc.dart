@@ -1,9 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:space_flight_news/domain/api/api.dart';
 import 'package:space_flight_news/domain/model/article.dart';
 import 'package:space_flight_news/navigation/navigator.dart';
 import 'package:space_flight_news/util/launcher.dart';
 
+part 'article_details_bloc.freezed.dart';
 part 'article_details_event.dart';
 part 'article_details_state.dart';
 
@@ -15,11 +17,14 @@ class ArticleDetailsBloc
     this._launcher,
     this._articleId,
   ) : super(const ArticleDetailsState.initial()) {
-    on<_Load>(_onLoad);
-    on<_Retry>(_onRetry);
-    on<_OpenArticles>(_onOpenArticles);
-    on<_ReadArticle>(_onReadArticle);
-
+    on<ArticleDetailsEvent>(
+      (event, emit) => event.map(
+        load: (event) => _onLoad(event, emit),
+        retry: (event) => _onRetry(event, emit),
+        openArticles: (event) => _onOpenArticles(event, emit),
+        readArticle: (event) => _onReadArticle(event, emit),
+      ),
+    );
     add(const ArticleDetailsEvent.load());
   }
 
@@ -33,7 +38,7 @@ class ArticleDetailsBloc
     _Load event,
     Emitter<ArticleDetailsState> emit,
   ) async {
-    if (state is LoadingArticleDetailsState) {
+    if (state.maybeMap(loading: (state) => true, orElse: () => false)) {
       return;
     }
 
@@ -65,10 +70,10 @@ class ArticleDetailsBloc
     _ReadArticle event,
     Emitter<ArticleDetailsState> emit,
   ) async {
-    final currentState = state;
-    if (currentState is ContentArticleDetailsState &&
-        currentState.article.url != null) {
-      await _launcher.launch(currentState.article.url!);
-    }
+    await (state.mapOrNull(
+            content: (state) => state.article.url != null
+                ? _launcher.launch(state.article.url!)
+                : null) ??
+        Future.value());
   }
 }

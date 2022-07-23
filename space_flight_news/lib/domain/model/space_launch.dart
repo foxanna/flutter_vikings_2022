@@ -1,28 +1,14 @@
-class SpaceLaunch {
-  const SpaceLaunch({
-    required this.id,
-  });
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  final String id;
+part 'space_launch.freezed.dart';
+
+@freezed
+class SpaceLaunch with _$SpaceLaunch {
+  const factory SpaceLaunch({
+    required String id,
+  }) = _SpaceLaunch;
 
   static SpaceLaunch fromJson(Map<String, dynamic> json) => SpaceLaunch(
         id: json['id'] as String,
-      );
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SpaceLaunch &&
-          runtimeType == other.runtimeType &&
-          id == other.id;
-
-  @override
-  int get hashCode => id.hashCode;
-
-  SpaceLaunch copyWith({
-    String? id,
-  }) =>
-      SpaceLaunch(
-        id: id ?? this.id,
       );
 }

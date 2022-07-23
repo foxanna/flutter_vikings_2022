@@ -1,32 +1,14 @@
 part of 'articles_list_bloc.dart';
 
-abstract class ArticlesListState {
-  const factory ArticlesListState.initial() = InitialArticlesListState;
+@freezed
+class ArticlesListState with _$ArticlesListState {
+  const factory ArticlesListState.initial() = _Initial;
 
-  const factory ArticlesListState.content({required List<Article> articles}) =
-      ContentArticlesListState;
+  const factory ArticlesListState.content({
+    @Default([]) List<Article> articles,
+  }) = _Content;
 
-  const factory ArticlesListState.loading() = LoadingArticlesListState;
+  const factory ArticlesListState.loading() = _Loading;
 
-  const factory ArticlesListState.error() = ErrorArticlesListState;
-}
-
-class InitialArticlesListState implements ArticlesListState {
-  const InitialArticlesListState();
-}
-
-class ContentArticlesListState implements ArticlesListState {
-  const ContentArticlesListState({
-    this.articles = const <Article>[],
-  });
-
-  final List<Article> articles;
-}
-
-class LoadingArticlesListState implements ArticlesListState {
-  const LoadingArticlesListState();
-}
-
-class ErrorArticlesListState implements ArticlesListState {
-  const ErrorArticlesListState();
+  const factory ArticlesListState.error() = _Error;
 }

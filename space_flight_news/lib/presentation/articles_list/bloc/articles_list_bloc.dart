@@ -1,8 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:space_flight_news/domain/api/api.dart';
 import 'package:space_flight_news/domain/model/article.dart';
 import 'package:space_flight_news/navigation/navigator.dart';
 
+part 'articles_list_bloc.freezed.dart';
 part 'articles_list_event.dart';
 part 'articles_list_state.dart';
 
@@ -12,9 +14,13 @@ class ArticlesListBloc extends Bloc<ArticlesListEvent, ArticlesListState> {
     this._navigator,
     this._launchId,
   ) : super(const ArticlesListState.initial()) {
-    on<_Load>(_onLoad);
-    on<_Retry>(_onRetry);
-    on<_OpenDetails>(_onOpenDetails);
+    on<ArticlesListEvent>(
+      (event, emit) => event.map(
+        load: (event) => _onLoad(event, emit),
+        retry: (event) => _onRetry(event, emit),
+        openDetails: (event) => _onOpenDetails(event, emit),
+      ),
+    );
 
     add(const ArticlesListEvent.load());
   }
@@ -28,7 +34,7 @@ class ArticlesListBloc extends Bloc<ArticlesListEvent, ArticlesListState> {
     _Load event,
     Emitter<ArticlesListState> emit,
   ) async {
-    if (state is LoadingArticlesListState) {
+    if (state.maybeMap(loading: (state) => true, orElse: () => false)) {
       return;
     }
 

@@ -25,26 +25,17 @@ class ArticleDetailsPage extends StatelessWidget {
       body: BlocProvider(
         create: (context) => diContainer<ArticleDetailsBloc>(param1: articleId),
         child: BlocBuilder<ArticleDetailsBloc, ArticleDetailsState>(
-            builder: (context, state) {
-          if (state is InitialArticleDetailsState) {
-            return const SizedBox();
-          }
-          if (state is LoadingArticleDetailsState) {
-            return const PageContentLoading();
-          }
-          if (state is ContentArticleDetailsState) {
-            return ArticleDetailsContent(article: state.article);
-          }
-          if (state is ErrorArticleDetailsState) {
-            return PageContentError(
+          builder: (context, state) => state.map(
+            initial: (state) => const SizedBox(),
+            loading: (state) => const PageContentLoading(),
+            content: (state) => ArticleDetailsContent(article: state.article),
+            error: (state) => PageContentError(
               onRetry: () => context
                   .read<ArticleDetailsBloc>()
                   .add(const ArticleDetailsEvent.retry()),
-            );
-          }
-
-          return const PageContentError();
-        }),
+            ),
+          ),
+        ),
       ),
     );
   }

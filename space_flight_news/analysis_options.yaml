@@ -2,4 +2,5 @@ include: package:flutter_lints/flutter.yaml
 
 analyzer:
   exclude:
+    - '**/*.freezed.dart'
     - '**/translations**/*.dart'

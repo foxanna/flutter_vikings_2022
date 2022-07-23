@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'space_launch.freezed.dart';
+part 'space_launch.g.dart';
 
 @freezed
 class SpaceLaunch with _$SpaceLaunch {
@@ -8,7 +9,6 @@ class SpaceLaunch with _$SpaceLaunch {
     required String id,
   }) = _SpaceLaunch;
 
-  static SpaceLaunch fromJson(Map<String, dynamic> json) => SpaceLaunch(
-        id: json['id'] as String,
-      );
+  factory SpaceLaunch.fromJson(Map<String, dynamic> json) =>
+      _$SpaceLaunchFromJson(json);
 }

@@ -14,8 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Article _$ArticleFromJson(Map<String, dynamic> json) {
+  return _Article.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Article {
+  @IntToStringConverter()
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
@@ -25,6 +30,7 @@ mixin _$Article {
   DateTime? get publishedAt => throw _privateConstructorUsedError;
   List<SpaceLaunch> get launches => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ArticleCopyWith<Article> get copyWith => throw _privateConstructorUsedError;
 }
@@ -34,7 +40,7 @@ abstract class $ArticleCopyWith<$Res> {
   factory $ArticleCopyWith(Article value, $Res Function(Article) then) =
       _$ArticleCopyWithImpl<$Res>;
   $Res call(
-      {String id,
+      {@IntToStringConverter() String id,
       String title,
       String? url,
       String? imageUrl,
@@ -107,7 +113,7 @@ abstract class _$$_ArticleCopyWith<$Res> implements $ArticleCopyWith<$Res> {
       __$$_ArticleCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
+      {@IntToStringConverter() String id,
       String title,
       String? url,
       String? imageUrl,
@@ -175,10 +181,10 @@ class __$$_ArticleCopyWithImpl<$Res> extends _$ArticleCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Article implements _Article {
   const _$_Article(
-      {required this.id,
+      {@IntToStringConverter() required this.id,
       required this.title,
       this.url,
       this.imageUrl,
@@ -188,7 +194,11 @@ class _$_Article implements _Article {
       final List<SpaceLaunch> launches = const []})
       : _launches = launches;
 
+  factory _$_Article.fromJson(Map<String, dynamic> json) =>
+      _$$_ArticleFromJson(json);
+
   @override
+  @IntToStringConverter()
   final String id;
   @override
   final String title;
@@ -231,6 +241,7 @@ class _$_Article implements _Article {
             const DeepCollectionEquality().equals(other._launches, _launches));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -247,11 +258,18 @@ class _$_Article implements _Article {
   @override
   _$$_ArticleCopyWith<_$_Article> get copyWith =>
       __$$_ArticleCopyWithImpl<_$_Article>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ArticleToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Article implements Article {
   const factory _Article(
-      {required final String id,
+      {@IntToStringConverter() required final String id,
       required final String title,
       final String? url,
       final String? imageUrl,
@@ -260,7 +278,10 @@ abstract class _Article implements Article {
       final DateTime? publishedAt,
       final List<SpaceLaunch> launches}) = _$_Article;
 
+  factory _Article.fromJson(Map<String, dynamic> json) = _$_Article.fromJson;
+
   @override
+  @IntToStringConverter()
   String get id;
   @override
   String get title;

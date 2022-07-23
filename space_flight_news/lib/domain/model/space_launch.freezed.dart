@@ -14,10 +14,15 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+SpaceLaunch _$SpaceLaunchFromJson(Map<String, dynamic> json) {
+  return _SpaceLaunch.fromJson(json);
+}
+
 /// @nodoc
 mixin _$SpaceLaunch {
   String get id => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SpaceLaunchCopyWith<SpaceLaunch> get copyWith =>
       throw _privateConstructorUsedError;
@@ -86,9 +91,12 @@ class __$$_SpaceLaunchCopyWithImpl<$Res> extends _$SpaceLaunchCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_SpaceLaunch implements _SpaceLaunch {
   const _$_SpaceLaunch({required this.id});
+
+  factory _$_SpaceLaunch.fromJson(Map<String, dynamic> json) =>
+      _$$_SpaceLaunchFromJson(json);
 
   @override
   final String id;
@@ -106,6 +114,7 @@ class _$_SpaceLaunch implements _SpaceLaunch {
             const DeepCollectionEquality().equals(other.id, id));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
@@ -114,10 +123,20 @@ class _$_SpaceLaunch implements _SpaceLaunch {
   @override
   _$$_SpaceLaunchCopyWith<_$_SpaceLaunch> get copyWith =>
       __$$_SpaceLaunchCopyWithImpl<_$_SpaceLaunch>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_SpaceLaunchToJson(
+      this,
+    );
+  }
 }
 
 abstract class _SpaceLaunch implements SpaceLaunch {
   const factory _SpaceLaunch({required final String id}) = _$_SpaceLaunch;
+
+  factory _SpaceLaunch.fromJson(Map<String, dynamic> json) =
+      _$_SpaceLaunch.fromJson;
 
   @override
   String get id;

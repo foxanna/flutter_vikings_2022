@@ -5,6 +5,7 @@ analyzer:
     - '**/*.freezed.dart'
     - '**/*.g.dart'
     - '**/*.gr.dart'
+    - '**/*.gen.dart'
     - '**/translations**/*.dart'
 
   errors:

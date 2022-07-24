@@ -6,7 +6,7 @@ import 'package:space_flight_news/di/di_container.dart';
 import 'package:space_flight_news/domain/model/article.dart';
 import 'package:space_flight_news/localization/build_context_extension.dart';
 import 'package:space_flight_news/presentation/articles_list/bloc/articles_list_bloc.dart';
-import 'package:space_flight_news/presentation/assets/assets.dart';
+import 'package:space_flight_news/presentation/assets/assets.gen.dart';
 import 'package:space_flight_news/presentation/widgets/page_content_error.dart';
 import 'package:space_flight_news/presentation/widgets/page_content_loading.dart';
 
@@ -74,7 +74,7 @@ class ArticlesListContent extends StatelessWidget {
           trailing: Visibility(
             visible: article.launches.isNotEmpty,
             child: Image.asset(
-              AssetsImages.linked,
+              Assets.images.linked.path,
               width: 24.0,
               height: 24.0,
             ),

@@ -7,7 +7,7 @@ import 'package:space_flight_news/di/di_container.dart';
 import 'package:space_flight_news/domain/model/article.dart';
 import 'package:space_flight_news/localization/build_context_extension.dart';
 import 'package:space_flight_news/presentation/article_details/bloc/article_details_bloc.dart';
-import 'package:space_flight_news/presentation/assets/assets.dart';
+import 'package:space_flight_news/presentation/assets/assets.gen.dart';
 import 'package:space_flight_news/presentation/widgets/page_content_error.dart';
 import 'package:space_flight_news/presentation/widgets/page_content_loading.dart';
 
@@ -63,10 +63,10 @@ class ArticleDetailsContent extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 16.0),
             child: FadeInImage.assetNetwork(
-              placeholder: AssetsImages.rocket,
+              placeholder: Assets.images.rocket.path,
               image: article.imageUrl!,
               imageErrorBuilder: (_, __, ___) => Image.asset(
-                AssetsImages.rocket,
+                Assets.images.rocket.path,
                 height: 300.0,
               ),
               height: 300.0,
@@ -122,7 +122,7 @@ class ArticleDetailsContent extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Image.asset(
-                      AssetsImages.linked,
+                      Assets.images.linked.path,
                       width: 16.0,
                       height: 16.0,
                     ),

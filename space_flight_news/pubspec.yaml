@@ -25,6 +25,7 @@ dependencies:
 dev_dependencies:
   auto_route_generator: 5.0.2
   build_runner: 2.2.0
+  flutter_gen_runner: 4.3.0
   flutter_lints: 2.0.1
   flutter_test:
     sdk: flutter
@@ -36,3 +37,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+
+flutter_gen:
+  output: lib/presentation/assets
+  assets:
+    package_parameter_enabled: true

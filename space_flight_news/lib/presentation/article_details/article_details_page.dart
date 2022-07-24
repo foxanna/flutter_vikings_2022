@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +14,7 @@ import 'package:space_flight_news/presentation/widgets/page_content_loading.dart
 class ArticleDetailsPage extends StatelessWidget {
   const ArticleDetailsPage({
     super.key,
-    required this.articleId,
+    @pathParam required this.articleId,
   });
 
   final String articleId;

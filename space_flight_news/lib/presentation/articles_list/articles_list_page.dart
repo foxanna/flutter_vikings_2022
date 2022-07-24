@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -12,7 +13,7 @@ import 'package:space_flight_news/presentation/widgets/page_content_loading.dart
 class ArticlesListPage extends StatelessWidget {
   const ArticlesListPage({
     super.key,
-    this.launchId,
+    @queryParam this.launchId,
   });
 
   final String? launchId;

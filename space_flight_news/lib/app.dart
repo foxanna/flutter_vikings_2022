@@ -9,10 +9,10 @@ class SpaceFlightNewsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      navigatorKey: diContainer<GlobalKey<NavigatorState>>(),
-      initialRoute: SpaceFlightNewsRouter.initialRoute,
-      onGenerateRoute: diContainer<SpaceFlightNewsRouter>().onGenerateRoute,
+    return MaterialApp.router(
+      routerDelegate: diContainer<SpaceFlightNewsRouter>().delegate(),
+      routeInformationParser:
+          diContainer<SpaceFlightNewsRouter>().defaultRouteParser(),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           brightness: Brightness.dark,

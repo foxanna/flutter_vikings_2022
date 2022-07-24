@@ -7,7 +7,9 @@ class SpaceFlightNewsNavigator {
 
   Future<void> goToArticlesList(String launchId) =>
       _router.pushNamed('/articles?launchId=$launchId');
+  // _router.push(ArticlesListPageRoute(launchId: launchId));
 
   Future<void> goToArticleDetails(String articleId) =>
       _router.pushNamed('/article/$articleId');
+  // _router.push(ArticleDetailsPageRoute(articleId: articleId));
 }

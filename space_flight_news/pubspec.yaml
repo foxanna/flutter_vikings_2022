@@ -26,6 +26,7 @@ dependencies:
 
 dev_dependencies:
   auto_route_generator: 5.0.2
+  bdd_widget_test: 1.4.2
   build_runner: 2.2.0
   injectable_generator: 1.5.4
   flutter_gen_runner: 4.3.0

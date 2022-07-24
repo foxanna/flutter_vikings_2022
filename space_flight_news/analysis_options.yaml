@@ -8,6 +8,7 @@ analyzer:
     - '**/*.gen.dart'
     - '**/*.config.dart'
     - '**/*.i69n.dart'
+    - '**/*_test.dart'
 
   errors:
     invalid_annotation_target: ignore

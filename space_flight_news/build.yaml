@@ -7,3 +7,6 @@ targets:
         options:
           include_if_null: false
           explicit_to_json: true
+      bdd_widget_test|featureBuilder:
+        options:
+          include: package:bdd_widget_test/bdd_options.yaml

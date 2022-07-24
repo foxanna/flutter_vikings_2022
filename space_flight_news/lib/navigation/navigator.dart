@@ -1,5 +1,7 @@
+import 'package:injectable/injectable.dart';
 import 'package:space_flight_news/navigation/router/router.dart';
 
+@injectable
 class SpaceFlightNewsNavigator {
   const SpaceFlightNewsNavigator(this._router);
 

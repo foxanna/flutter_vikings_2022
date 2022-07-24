@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 
+@module
 abstract class DIAppModule {
-  static GlobalKey<NavigatorState> get key => GlobalKey<NavigatorState>();
+  @lazySingleton
+  GlobalKey<NavigatorState> get key => GlobalKey<NavigatorState>();
 }

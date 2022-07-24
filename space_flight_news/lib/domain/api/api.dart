@@ -1,14 +1,17 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:space_flight_news/domain/model/article.dart';
 
 part 'api.g.dart';
 
+@injectable
 @RestApi()
 abstract class SpaceFlightNewsApi {
+  @factoryMethod
   factory SpaceFlightNewsApi(
     Dio dio, {
-    String baseUrl,
+    @Named('SpaceFlightNewsBaseUrl') String baseUrl,
   }) = _SpaceFlightNewsApi;
 
   @GET('/articles')

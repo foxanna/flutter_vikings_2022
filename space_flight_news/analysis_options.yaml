@@ -6,6 +6,7 @@ analyzer:
     - '**/*.g.dart'
     - '**/*.gr.dart'
     - '**/*.gen.dart'
+    - '**/*.config.dart'
     - '**/translations**/*.dart'
 
   errors:

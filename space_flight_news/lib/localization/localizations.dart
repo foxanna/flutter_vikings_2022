@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:space_flight_news/localization/translations/translations.dart';
-import 'package:space_flight_news/localization/translations/translations_uk.dart';
+import 'package:space_flight_news/localization/translations/translations.i69n.dart';
+import 'package:space_flight_news/localization/translations/translations_uk.i69n.dart';
 
 final _translations = <String, Translations Function()>{
   'en': () => const Translations(),

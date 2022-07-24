@@ -315,6 +315,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
+  i69n:
+    dependency: "direct main"
+    description:
+      name: i69n
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
   injectable:
     dependency: "direct main"
     description:
